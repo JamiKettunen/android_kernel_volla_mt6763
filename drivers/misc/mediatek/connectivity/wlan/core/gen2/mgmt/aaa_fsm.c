@@ -451,7 +451,7 @@ WLAN_STATUS aaaFsmRunEventRxAssoc(IN P_ADAPTER_T prAdapter, IN P_SW_RFB_T prSwRf
 #endif
 
 #if CFG_ENABLE_BT_OVER_WIFI
-			if ((IS_STA_IN_BOW(prStaRec))) {
+			if (IS_STA_IN_BOW(prStaRec)) {
 				/* if (bowRunEventAAAComplete(prAdapter, prStaRec) == WLAN_STATUS_SUCCESS) { */
 				prStaRec->u2AssocId = bssAssignAssocID(prStaRec);
 				prStaRec->eAuthAssocState = AAA_STATE_SEND_ASSOC2;	/* NOTE(Kevin): for TX done */

@@ -15,6 +15,12 @@
 # If KERNELRELEASE is defined, we've been invoked from the
 # kernel build system and can use its language.
 ifneq ($(KERNELRELEASE),)
+    ifeq ($(cc-name),clang)
+        # There are over a thousand occurances of this warning in the MediaTek
+        # connectivity stack; there is absolutely no hope in fixing these all.
+        KBUILD_CFLAGS += -Wno-typedef-redefinition
+    endif
+
     subdir-ccflags-y += -I$(srctree)
     subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/base/power/include
     subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/base/power/include/clkbuf_v1

@@ -29,7 +29,7 @@
 #define MAX_SUBBAND_NUM     6
 #define MAX_SUBBAND_NUM_5G  8
 
-#define COUNTRY_CODE_NULL               ((UINT_16)0x0)
+#define COUNTRY_CODE_NULL   0
 
 /* ISO/IEC 3166-1 two-character country codes */
 
