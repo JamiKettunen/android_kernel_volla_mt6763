@@ -71,7 +71,6 @@ obj-$(CONFIG_MTK_USBFSH) += usb11/
 obj-$(CONFIG_MU3_PHY)	+= mu3phy/
 obj-$(CONFIG_USB_MU3D_DRV)	+= mu3d/
 obj-$(CONFIG_SSUSB_DRV) += ssusb/
-obj-$(CONFIG_USB_XHCI_MTK)	+= xhci/
 obj-$(CONFIG_USB_C_SWITCH)	+= usb_c/
 obj-$(CONFIG_MTK_GPIO) += gpio/
 obj-$(CONFIG_MTK_MT6306_GPIO_SUPPORT) += gpio/
