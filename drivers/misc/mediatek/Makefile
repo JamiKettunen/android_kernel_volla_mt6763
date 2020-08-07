@@ -188,7 +188,6 @@ obj-$(CONFIG_MTK_SMARTPA_SOUND)	+= smartpa/
 obj-$(CONFIG_PCIE_MTK_UNIT)	+= pcie_ut/
 obj-y += mtprintk/
 obj-$(CONFIG_MTK_ICCS_SUPPORT)+= iccs/
-obj-$(CONFIG_MACH_MT8167) += xo/
 obj-$(CONFIG_MTK_MD_DIRECT_TETHERING_SUPPORT)	+= pkt_track/
 obj-$(CONFIG_MTK_GZ_KREE)  += geniezone/
 obj-$(CONFIG_MTK_TRUSTED_MEMORY_SUBSYSTEM) += trusted_mem/
