@@ -257,7 +257,6 @@ source "drivers/misc/mediatek/trusted_mem/Kconfig"
 source "drivers/misc/mediatek/sync/Kconfig"
 source "drivers/misc/mediatek/videocodec/Kconfig"
 source "drivers/misc/mediatek/video/Kconfig"
-source "drivers/misc/mediatek/vpu/Kconfig"
 source "drivers/misc/mediatek/dfrc/Kconfig"
 
 config MTK_CAM_SECURITY_SUPPORT

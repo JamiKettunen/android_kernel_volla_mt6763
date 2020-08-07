@@ -110,7 +110,6 @@ obj-$(CONFIG_MTK_CAM_CAL) += cam_cal/src/
 obj-$(CONFIG_MTK_LENS)   += lens/
 obj-$(CONFIG_MTK_FLASHLIGHT)	+= flashlight/
 obj-$(CONFIG_RT_FLASHLIGHT)	+= flashlight/richtek/
-obj-$(CONFIG_MTK_VPU_SUPPORT) += vpu/
 obj-$(CONFIG_MTK_CCU)	+= ccu/src/
 ifneq ($(wildcard $(srctree)/drivers/misc/mediatek/met_drv/),)
 obj-y += met_drv/
