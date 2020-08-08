@@ -6,8 +6,4 @@ ccflags-y += -I$(srctree)/drivers/misc/mediatek/sensors-1.0/include
 obj-y   +=  mag.o
 obj-y   +=  mag_factory.o
 
-obj-$(CONFIG_MTK_MAGHUB)        +=  maghub/
-obj-$(CONFIG_MTK_AKM09911)         +=  akm09911/
-obj-$(CONFIG_MTK_ST480)         +=  st480/
-obj-$(CONFIG_MTK_AKM09918)      +=  akm09918/
 obj-$(CONFIG_MTK_AFX133)          +=  afx133/

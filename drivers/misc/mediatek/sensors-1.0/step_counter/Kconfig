@@ -10,7 +10,6 @@ config CUSTOM_KERNEL_SIGNIFICANT_MOTION
 	help
 	  Kernel space sigificant motion sensor driver.
 
-source "drivers/misc/mediatek/sensors-1.0/step_counter/stepsignhub/Kconfig"
 
 
 #prize added by huarui, sensor driver, 20190111-start
