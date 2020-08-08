@@ -19,5 +19,4 @@ obj-$(CONFIG_MTK_LEDS) += mtk_leds_drv.o
 obj-y += $(subst ",,$(CONFIG_MTK_PLATFORM))/
 
 ###prize  lsw add this for breath leds at 20190624 start
-obj-$(CONFIG_PRIZE_LEDS_AW2015) += leds-aw2015.o
 ###prize  lsw add this for breath leds at 20190624 end

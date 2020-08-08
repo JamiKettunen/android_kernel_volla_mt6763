@@ -13,6 +13,5 @@
 
 obj-$(CONFIG_MTK_LEDS) := mtk_leds.o
 
-obj-$(CONFIG_BACKLIGHT_SUPPORT_LM3697) += mtk_lm3697_driver.o
 
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/video/include
