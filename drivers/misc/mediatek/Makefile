@@ -68,7 +68,6 @@ obj-$(CONFIG_MTK_PMIC_NEW_ARCH)	+= pmic/
 obj-$(CONFIG_MTK_PMIC_WRAP_HAL) += pmic_wrap/
 obj-$(CONFIG_USB_MTK_HDRC) += usb20/
 obj-$(CONFIG_MTK_USBFSH) += usb11/
-obj-$(CONFIG_SSUSB_DRV) += ssusb/
 obj-$(CONFIG_USB_C_SWITCH)	+= usb_c/
 obj-$(CONFIG_MTK_GPIO) += gpio/
 obj-$(CONFIG_MTK_MT6306_GPIO_SUPPORT) += gpio/
