@@ -131,10 +131,7 @@ obj-$(CONFIG_TRUSTONIC_TEE_SUPPORT) += gcpu/
 ifeq ($(CONFIG_HAVE_MTK_IN_HOUSE_TEE_SUPPORT),y)
 #obj-$(CONFIG_TRUSTY) += gcpu/
 endif
-obj-$(CONFIG_TRUSTONIC_TEE_SUPPORT) += gud/
 obj-$(CONFIG_MICROTRUST_TEE_SUPPORT) += teei/
-obj-$(CONFIG_TRUSTKERNEL_TEE_SUPPORT) += tkcore/
-obj-$(CONFIG_MTK_IN_HOUSE_TEE_SUPPORT) += mtee/
 obj-$(CONFIG_MTK_DEBUG_LATCH)	+= debug_latch/
 obj-$(CONFIG_MTK_DEBUG_TRACER)	+= debug_tracer/
 obj-$(CONFIG_MTK_DFD_INTERNAL_DUMP) += dfd/
@@ -150,7 +147,6 @@ obj-$(CONFIG_ZONE_MOVABLE_CMA) += zone_movable_cma/
 obj-y += performance/
 
 ifeq ($(CONFIG_HAVE_MTK_IN_HOUSE_TEE_SUPPORT),y)
-#obj-$(CONFIG_TRUSTY) += mtee/
 endif
 
 obj-$(CONFIG_THERMAL)   += thermal/
