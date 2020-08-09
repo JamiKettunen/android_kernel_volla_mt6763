@@ -193,17 +193,14 @@ obj-y += timer/
 #io boost
 obj-y += io_boost/
 #prize-add-pengzhipeng-20190411-start
-obj-y    += prize/
 #prize-add-pengzhipeng-20190411-end
 
 #PRIZE
 obj-$(CONFIG_PRIZE_DUAL_CAMERA_ENABLE) += prize_dual_camera/
 
 #prize added by huarui, sensor driver, 20190111-start
-obj-$(CONFIG_PRIZE_DUAL_CAM_ENABLE)   +=  prize_dual_cam/
 #prize added by huarui, sensor driver, 20190111-end
 
 #/*zhengjiang.zhu@prize.Camera.Driver  2018/09/30  add for hall1120*/ 
-obj-$(CONFIG_PRIZE_STEP_MOTOR_ENABLE) += prize_step_motor/
 obj-$(CONFIG_SENSOR_HALL_MXM1120) += hall_m120/
 #/*zhengjiang.zhu@prize.Camera.Driver  2018/09/30  add for hall1120*/
