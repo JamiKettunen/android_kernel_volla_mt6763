@@ -202,5 +202,4 @@ obj-$(CONFIG_PRIZE_DUAL_CAMERA_ENABLE) += prize_dual_camera/
 #prize added by huarui, sensor driver, 20190111-end
 
 #/*zhengjiang.zhu@prize.Camera.Driver  2018/09/30  add for hall1120*/ 
-obj-$(CONFIG_SENSOR_HALL_MXM1120) += hall_m120/
 #/*zhengjiang.zhu@prize.Camera.Driver  2018/09/30  add for hall1120*/

@@ -610,7 +610,6 @@ config PRIZE_STEP_MOTOR_ENABLE
 	  Select Y to enable prize_step_motor function
 #/*zhengjiang.zhu@prize.Camera.Driver  2018/09/30  end for step_motor*/ 
 #/*zhengjiang.zhu@prize.Camera.Driver  2018/09/30  add for hall1120*/
-source "drivers/misc/mediatek/hall_m120/Kconfig"
 #/*zhengjiang.zhu@prize.Camera.Driver  2018/09/30  end for hall1120*/
 
 endif
