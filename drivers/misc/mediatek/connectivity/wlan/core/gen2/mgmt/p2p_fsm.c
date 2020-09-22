@@ -1083,7 +1083,6 @@ VOID p2pFsmRunEventStartAP(IN P_ADAPTER_T prAdapter, IN P_MSG_HDR_T prMsgHdr)
 				P_P2P_SPECIFIC_BSS_INFO_T prP2pSpecificBssInfo =
 				    prAdapter->rWifiVar.prP2pSpecificBssInfo;
 				P_P2P_CHNL_REQ_INFO_T prChnlReqInfo = &prP2pFsmInfo->rChnlReqInfo;
-				P_P2P_SCAN_REQ_INFO_T prScanReqInfo = &(prP2pFsmInfo->rScanReqInfo);
 
 #if 1
 				/* 2012-01-27: frog - Channel set from upper layer is the first priority. */
