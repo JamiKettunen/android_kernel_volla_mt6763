@@ -609,7 +609,7 @@ config MTK_DYNAMIC_LOAD_STORE_BYPASS_WA
 endmenu    # Misc
 #prize-add-pengzhipeng-20190411-start
 
-source "drivers/misc/mediatek/prize/Kconfig
+source "drivers/misc/mediatek/prize/Kconfig"
 #prize-add-pengzhipeng-20190411-end
 
 source "drivers/misc/mediatek/prize_dual_camera/Kconfig"

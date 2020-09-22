@@ -27,4 +27,4 @@ config PRIZE_VEB_A5
   help
     PRIZE_VEB_A5	
 
-source "drivers/misc/mediatek/prize/lcdbias/Kconfig
+source "drivers/misc/mediatek/prize/lcdbias/Kconfig"
