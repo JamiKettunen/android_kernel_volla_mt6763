@@ -44,4 +44,4 @@ endif
 
 EXTRA_CFLAGS += -Wall
 
-$(info $(if $(DEBUG),DEBUG=$(DEBUG)))
+#$(info $(if $(DEBUG),DEBUG=$(DEBUG)))
