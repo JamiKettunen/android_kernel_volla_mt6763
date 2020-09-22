@@ -15,7 +15,7 @@
 import re
 import string
 
-
+DEBUG = False
 LEVEL_INFO = '[DCT_INFO]: '
 LEVEL_WARN = '[DCT_WARNING]: '
 LEVEL_ERROR = '[DCT_ERROR]: '
@@ -27,7 +27,8 @@ class LogLevel:
 
 def log(level, msg):
     if level == LogLevel.info:
-        print LEVEL_INFO + msg
+        if DEBUG:
+            print LEVEL_INFO + msg
     elif level == LogLevel.warn:
         print LEVEL_WARN + msg
     elif level == LogLevel.error:
