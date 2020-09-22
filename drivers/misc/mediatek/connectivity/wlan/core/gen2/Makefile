@@ -164,7 +164,7 @@ ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/common/common_main/
 ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/common/common_main/linux/include
 ccflags-y += -DMTK_WCN_WMT_STP_EXP_SYMBOL_ABSTRACT
 
-ccflags-y += -Wno-error
+ccflags-y += -Wno-error -Wno-declaration-after-statement
 
 MODULE_NAME := wlan_drv_gen2
 #obj-$(CONFIG_MTK_COMBO_WIFI) += $(MODULE_NAME).o

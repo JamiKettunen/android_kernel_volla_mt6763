@@ -62,7 +62,6 @@ VOID p2pFuncRequestScan(IN P_ADAPTER_T prAdapter, IN P_P2P_SCAN_REQ_INFO_T prSca
 	UINT_8 aucP2pSsid[] = P2P_WILDCARD_SSID;
 	/*NFC Beam + Indication */
 	P_BSS_INFO_T prP2pBssInfo = (P_BSS_INFO_T) NULL;
-	P_P2P_CHNL_REQ_INFO_T prChnlReqInfo = (P_P2P_CHNL_REQ_INFO_T) NULL;
 
 	prP2pBssInfo = &(prAdapter->rWifiVar.arBssInfo[NETWORK_TYPE_P2P_INDEX]);
 

@@ -1890,7 +1890,6 @@ static INT_32 wlanNetRegister(struct wireless_dev *prWdev)
 static int wlanSetMacAddress(struct net_device *ndev, void *addr)
 {
 	P_GLUE_INFO_T prGlueInfo = NULL;
-	P_BSS_INFO_T prAisBssInfo = NULL;
 	struct sockaddr *sa = NULL;
 	UINT_8 aucMacAddr[MAC_ADDR_LEN];
 	WLAN_STATUS rStatus;

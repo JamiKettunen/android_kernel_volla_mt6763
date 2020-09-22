@@ -92,7 +92,7 @@
 #include <linux/topology.h>
 #include <asm/cputype.h>
 
-#if CONFIG_MICROTRUST_TZ_DRIVER_MTK_BOOTPROF
+#ifdef CONFIG_MICROTRUST_TZ_DRIVER_MTK_BOOTPROF
 #define TEEI_BOOT_FOOTPRINT(str) log_boot(str)
 #else
 #define TEEI_BOOT_FOOTPRINT(str) IMSG_PRINTK("%s\n", str)
