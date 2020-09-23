@@ -102,7 +102,7 @@ static short lowmem_adj[9] = {
 	12,
 };
 
-static int lowmem_adj_size = 9;
+static int lowmem_adj_size = 4;
 static int lowmem_minfree[9] = {
 	3 * 512,	/* 6MB */
 	2 * 1024,	/* 8MB */
@@ -110,7 +110,7 @@ static int lowmem_minfree[9] = {
 	16 * 1024,	/* 64MB */
 };
 
-static int lowmem_minfree_size = 9;
+static int lowmem_minfree_size = 4;
 
 #define LOWMEM_DEATHPENDING_TIMEOUT	(HZ)
 static unsigned long lowmem_deathpending_timeout;
@@ -446,20 +446,24 @@ static unsigned long lowmem_scan(struct shrinker *s, struct shrink_control *sc)
 
 #if defined(CONFIG_64BIT) && defined(CONFIG_SWAP)
 	/* Halve other_free if there is less free swap */
+
+	/* Disabled for Ubuntu Touch
 	if (vm_swap_full()) {
 		lowmem_print(3, "Halve other_free %d\n", other_free);
 		other_free >>= 1;
-	}
+	}*/
 #endif
 
 #ifdef CONFIG_SWAP
 	swap_pages = atomic_long_read(&nr_swap_pages);
 	/* More than 1/2 swap usage */
+	/* Disabled for Ubuntu Touch
 	if (swap_pages * 2 < total_swap_pages)
-		to_be_aggressive++;
+		to_be_aggressive++;*/
 	/* More than 3/4 swap usage */
+	/* Disabled for Ubuntu Touch
 	if (swap_pages * 4 < total_swap_pages)
-		to_be_aggressive++;
+		to_be_aggressive++;*/
 
 #ifndef CONFIG_MTK_GMO_RAM_OPTIMIZE
 	/* Try to enable AMR when we have enough memory */
