@@ -552,7 +552,7 @@ static int submit_flush_wait(struct f2fs_sb_info *sbi, nid_t ino)
 static int issue_flush_thread(void *data)
 {
 	struct f2fs_sb_info *sbi = data;
-	struct flush_cmd_control *fcc = SM_I(sbi)->fcc_info;
+	struct flush_cmd_control *fcc = SM_I(sbi)->cmd_control_info;
 	wait_queue_head_t *q = &fcc->flush_wait_queue;
 repeat:
 	if (kthread_should_stop())
@@ -589,7 +589,7 @@ repeat:
 
 int f2fs_issue_flush(struct f2fs_sb_info *sbi, nid_t ino)
 {
-	struct flush_cmd_control *fcc = SM_I(sbi)->fcc_info;
+	struct flush_cmd_control *fcc = SM_I(sbi)->cmd_control_info;
 	struct flush_cmd cmd;
 	int ret;
 
@@ -657,8 +657,8 @@ int create_flush_cmd_control(struct f2fs_sb_info *sbi)
 	struct flush_cmd_control *fcc;
 	int err = 0;
 
-	if (SM_I(sbi)->fcc_info) {
-		fcc = SM_I(sbi)->fcc_info;
+	if (SM_I(sbi)->cmd_control_info) {
+		fcc = SM_I(sbi)->cmd_control_info;
 		if (fcc->f2fs_issue_flush)
 			return err;
 		goto init_thread;
@@ -671,7 +671,7 @@ int create_flush_cmd_control(struct f2fs_sb_info *sbi)
 	atomic_set(&fcc->issing_flush, 0);
 	init_waitqueue_head(&fcc->flush_wait_queue);
 	init_llist_head(&fcc->issue_list);
-	SM_I(sbi)->fcc_info = fcc;
+	SM_I(sbi)->cmd_control_info = fcc;
 	if (!test_opt(sbi, FLUSH_MERGE))
 		return err;
 
@@ -681,7 +681,7 @@ init_thread:
 	if (IS_ERR(fcc->f2fs_issue_flush)) {
 		err = PTR_ERR(fcc->f2fs_issue_flush);
 		kfree(fcc);
-		SM_I(sbi)->fcc_info = NULL;
+		SM_I(sbi)->cmd_control_info = NULL;
 		return err;
 	}
 
@@ -690,7 +690,7 @@ init_thread:
 
 void destroy_flush_cmd_control(struct f2fs_sb_info *sbi, bool free)
 {
-	struct flush_cmd_control *fcc = SM_I(sbi)->fcc_info;
+	struct flush_cmd_control *fcc = SM_I(sbi)->cmd_control_info;
 
 	if (fcc && fcc->f2fs_issue_flush) {
 		struct task_struct *flush_thread = fcc->f2fs_issue_flush;
@@ -700,7 +700,7 @@ void destroy_flush_cmd_control(struct f2fs_sb_info *sbi, bool free)
 	}
 	if (free) {
 		kfree(fcc);
-		SM_I(sbi)->fcc_info = NULL;
+		SM_I(sbi)->cmd_control_info = NULL;
 	}
 }
 

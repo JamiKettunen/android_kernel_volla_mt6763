@@ -948,7 +948,7 @@ struct f2fs_sm_info {
 	unsigned int min_ssr_sections;	/* threshold to trigger SSR allocation */
 
 	/* for flush command control */
-	struct flush_cmd_control *fcc_info;
+	struct flush_cmd_control *cmd_control_info;
 
 	/* for discard command control */
 	struct discard_cmd_control *dcc_info;

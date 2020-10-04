@@ -58,13 +58,13 @@ static void update_general_status(struct f2fs_sb_info *sbi)
 	si->max_vw_cnt = atomic_read(&sbi->max_vw_cnt);
 	si->nr_wb_cp_data = get_pages(sbi, F2FS_WB_CP_DATA);
 	si->nr_wb_data = get_pages(sbi, F2FS_WB_DATA);
-	if (SM_I(sbi) && SM_I(sbi)->fcc_info) {
+	if (SM_I(sbi) && SM_I(sbi)->cmd_control_info) {
 		si->nr_flushed =
-			atomic_read(&SM_I(sbi)->fcc_info->issued_flush);
+			atomic_read(&SM_I(sbi)->cmd_control_info->issued_flush);
 		si->nr_flushing =
-			atomic_read(&SM_I(sbi)->fcc_info->issing_flush);
+			atomic_read(&SM_I(sbi)->cmd_control_info->issing_flush);
 		si->flush_list_empty =
-			llist_empty(&SM_I(sbi)->fcc_info->issue_list);
+			llist_empty(&SM_I(sbi)->cmd_control_info->issue_list);
 	}
 	if (SM_I(sbi) && SM_I(sbi)->dcc_info) {
 		si->nr_discarded =
@@ -225,7 +225,7 @@ get_cache:
 		si->cache_mem += sizeof(struct f2fs_gc_kthread);
 
 	/* build merge flush thread */
-	if (SM_I(sbi)->fcc_info)
+	if (SM_I(sbi)->cmd_control_info)
 		si->cache_mem += sizeof(struct flush_cmd_control);
 	if (SM_I(sbi)->dcc_info) {
 		si->cache_mem += sizeof(struct discard_cmd_control);
