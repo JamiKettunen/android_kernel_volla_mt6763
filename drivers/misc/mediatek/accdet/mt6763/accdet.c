@@ -1413,9 +1413,10 @@ static int accdet_irq_handler(void)
 
 	cur_time = accdet_get_current_time();
 	ACCDET_DEBUG("[accdet_irq_handler]CONFIG_ACCDET_EINT-->enter\n");
-	if ((pmic_pwrap_read(ACCDET_CON12) & ACCDET_IRQ_B0))
+	if (pmic_pwrap_read(ACCDET_CON12) & ACCDET_IRQ_B0) {
 		eint_type = ACCDET_IRQ_IN;
 		clear_accdet_interrupt();
+	}
 	if (s_accdet_status == MIC_BIAS) {
 		/* accdet_auxadc_switch(1); */
 		pmic_pwrap_write(ACCDET_CON03, REGISTER_VALUE(accdet_cust_setting->pwm_width));
