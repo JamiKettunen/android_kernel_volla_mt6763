@@ -766,8 +766,9 @@ static int mtk_switch_charging_run(struct charger_manager *info)
 /* prize added by chenjiaxi, hl7005 wdt, 20190403-end */
 
 	do {
+		chr_debug("mtk_switch_charging_run2 [%d] %d\n", swchgalg->state, info->pd_type);
+
 		switch (swchgalg->state) {
-			chr_err("mtk_switch_charging_run2 [%d] %d\n", swchgalg->state, info->pd_type);
 		case CHR_CC:
 			ret = mtk_switch_chr_cc(info);
 			break;

@@ -67,7 +67,7 @@ void mt_ppm_register_client(enum ppm_client client, void (*limit)(struct ppm_cli
 		ppm_main_info.client_info[client].name = "HOTPLUG";
 		break;
 	default:
-		ppm_main_info.client_info[client].name = "UNKNOWN";
+		//ppm_main_info.client_info[client].name = "UNKNOWN";
 		break;
 	}
 	ppm_main_info.client_info[client].client = client;

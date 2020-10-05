@@ -287,9 +287,9 @@ static int cw_init(struct cw_battery *cw_bat)
     	for(i = 0; i < SIZE_BATINFO; i++) { 
 	        ret = cw_read(cw_bat->client, (REG_BATINFO + i), &reg_val);
 	        if (ret < 0)
-	        	return ret;
+	            return ret;
 	        
-			printk(KERN_ERR"%X\n", reg_val);
+	        printk(KERN_ERR"%X\n", reg_val);
 	        if (config_info[i] != reg_val)
 	            break;
         }
