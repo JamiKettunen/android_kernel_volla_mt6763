@@ -2752,7 +2752,7 @@ void save_set_exclusive_task(int pid)
 
 		list_for_each_entry(tmp, list_head, list) {
 			if (!find && (tmp->pid == p->pid)) {
-				strncpy(tmp->comm, p->comm, sizeof(p->comm));
+				strncpy(tmp->comm, p->comm, sizeof(tmp->comm));
 				printk_deferred("sched: repeated exclusive task:%s, pid=%d, count=%d\n",
 						tmp->comm, tmp->pid, excl_task_count);
 				find = 1;
