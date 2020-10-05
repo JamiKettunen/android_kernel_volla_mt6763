@@ -1466,7 +1466,9 @@ static ssize_t himax_diag_write(struct file *filp, const char __user *buff, size
         g_diag_command = 0x00;
     }
     else
+    {
         I("[Himax]g_diag_command=0x%x ,storage_type=%d, rawdata_type=%d\n",g_diag_command,storage_type,rawdata_type);
+    }
 
 	memset(diag_mutual, 0x00, x_channel * y_channel * sizeof(int32_t)); /* Set data 0 */
 	memset(diag_self, 0x00, sizeof(diag_self));
