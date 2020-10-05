@@ -3400,6 +3400,13 @@ static ssize_t ext4_direct_IO(struct kiocb *iocb, struct iov_iter *iter,
 	size_t count = iov_iter_count(iter);
 	ssize_t ret;
 
+	if (iov_iter_rw(iter) == READ) {
+		loff_t size = i_size_read(inode);
+
+		if (offset >= size)
+			return 0;
+	}
+
 #ifdef CONFIG_EXT4_FS_ENCRYPTION
 	if (ext4_using_software_encryption(inode))
 		return 0;
