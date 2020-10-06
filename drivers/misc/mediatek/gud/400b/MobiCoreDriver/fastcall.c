@@ -20,7 +20,7 @@
 #include <linux/debugfs.h>
 #include <linux/sched.h>	/* local_clock */
 #include <linux/version.h>
-#if KERNEL_VERSION(4, 11, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
 #include <linux/sched/clock.h>	/* local_clock */
 #endif
 #include <linux/uaccess.h>
@@ -235,7 +235,7 @@ static int mc_cpu_offline(int cpu)
 	return 0;
 }
 
-#if KERNEL_VERSION(4, 10, 0) > LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
 static int mobicore_cpu_callback(struct notifier_block *nfb,
 				 unsigned long action, void *hcpu)
 {
@@ -385,7 +385,7 @@ static bool mc_fastcall(void *data)
 		.data = data,
 	};
 
-#if KERNEL_VERSION(4, 9, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 	if (!kthread_queue_work(&fastcall_worker, &fc_work.work))
 		return false;
 
@@ -442,7 +442,7 @@ int mc_fastcall_init(void)
 
 	wake_up_process(fastcall_thread);
 #ifdef TBASE_CORE_SWITCHER
-#if KERNEL_VERSION(4, 10, 0) > LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
 	ret = register_cpu_notifier(&mobicore_cpu_notifer);
 #else
 	ret = cpuhp_setup_state_nocalls(CPUHP_AP_ONLINE_DYN,
@@ -467,7 +467,7 @@ void mc_fastcall_exit(void)
 #ifdef MC_FASTCALL_WORKER_THREAD
 	if (!IS_ERR_OR_NULL(fastcall_thread)) {
 #ifdef TBASE_CORE_SWITCHER
-#if KERNEL_VERSION(4, 10, 0) > LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
 		unregister_cpu_notifier(&mobicore_cpu_notifer);
 #else
 		cpuhp_remove_state_nocalls(CPUHP_AP_ONLINE_DYN);

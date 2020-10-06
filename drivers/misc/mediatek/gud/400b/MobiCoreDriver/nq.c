@@ -20,7 +20,7 @@
 #include <linux/kthread.h>
 #include <linux/of_irq.h>
 #include <linux/version.h>
-#if KERNEL_VERSION(4, 11, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
 #include <linux/sched/clock.h>	/* local_clock */
 #endif
 
