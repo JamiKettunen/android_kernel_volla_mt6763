@@ -45,7 +45,7 @@
  */
 static inline void page_table_entry_set(u64 *pte, u64 phy)
 {
-#if KERNEL_VERSION(3, 18, 13) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 13)
 	WRITE_ONCE(*pte, phy);
 #else
 #ifdef CONFIG_64BIT

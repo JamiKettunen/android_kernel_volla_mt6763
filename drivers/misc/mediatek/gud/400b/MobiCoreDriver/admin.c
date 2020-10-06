@@ -75,7 +75,7 @@ static struct mc_admin_driver_request {
 	bool lock_channel_during_freeze;/* Is freezing ongoing ? */
 } g_request;
 
-#if KERNEL_VERSION(3, 13, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 13, 0)
 static inline void reinit_completion_local(struct completion *x)
 {
 	reinit_completion(x);

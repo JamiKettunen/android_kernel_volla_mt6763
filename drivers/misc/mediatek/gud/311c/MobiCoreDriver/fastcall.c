@@ -20,7 +20,7 @@
 #include <linux/debugfs.h>
 #include <linux/sched.h>	/* local_clock */
 #include <linux/version.h>
-#if KERNEL_VERSION(4, 11, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
 #include <linux/sched/clock.h>	/* local_clock */
 #endif
 #include <linux/uaccess.h>
@@ -376,7 +376,7 @@ static bool mc_fastcall(void *data)
 		.data = data,
 	};
 
-#if KERNEL_VERSION(4, 9, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 	if (!kthread_queue_work(&fastcall_worker, &fc_work.work))
 		return false;
 

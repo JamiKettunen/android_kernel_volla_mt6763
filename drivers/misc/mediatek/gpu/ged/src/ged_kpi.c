@@ -43,7 +43,7 @@
 #include <ged_frr.h>
 #endif
 
-#if (KERNEL_VERSION(3, 10, 0) > LINUX_VERSION_CODE)
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0))
 #include <linux/sync.h>
 #else
 #include <../drivers/staging/android/sync.h>

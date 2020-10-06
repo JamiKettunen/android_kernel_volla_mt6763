@@ -179,7 +179,7 @@ struct tee_shm *tee_shm_alloc(struct tee_context *ctx, size_t size, u32 flags)
 	}
 
 	if (flags & TEE_SHM_DMA_BUF) {
-#if KERNEL_VERSION(4, 4, 1) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 1)
 		DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
 
 		exp_info.ops = &tee_shm_dma_buf_ops;
