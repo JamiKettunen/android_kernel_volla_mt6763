@@ -1570,7 +1570,7 @@ VOID kalP2pUnlinkBss(IN P_GLUE_INFO_T prGlueInfo, IN UINT_8 aucBSSID[])
 	if (prGlueP2pInfo == NULL)
 		return;
 
-#if (KERNEL_VERSION(4, 1, 0) <= LINUX_VERSION_CODE)
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0))
 	bss = cfg80211_get_bss(prGlueP2pInfo->prWdev->wiphy,
 			NULL, /* channel */
 			aucBSSID,
