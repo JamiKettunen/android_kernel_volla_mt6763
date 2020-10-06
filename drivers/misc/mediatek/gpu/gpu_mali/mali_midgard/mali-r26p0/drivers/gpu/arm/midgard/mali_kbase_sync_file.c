@@ -73,7 +73,7 @@ int kbase_sync_fence_out_create(struct kbase_jd_atom *katom, int stream_fd)
 	if (!fence)
 		return -ENOMEM;
 
-#if (KERNEL_VERSION(4, 9, 67) >= LINUX_VERSION_CODE)
+#if (LINUX_VERSION_CODE <= KERNEL_VERSION(4, 9, 67))
 	/* Take an extra reference to the fence on behalf of the sync_file.
 	 * This is only needed on older kernels where sync_file_create()
 	 * does not take its own reference. This was changed in v4.9.68,
@@ -170,9 +170,9 @@ static void kbase_fence_wait_callback(struct dma_fence *fence,
 	struct kbase_context *kctx = katom->kctx;
 
 	/* Cancel atom if fence is erroneous */
-#if (KERNEL_VERSION(4, 11, 0) <= LINUX_VERSION_CODE || \
-	 (KERNEL_VERSION(4, 10, 0) > LINUX_VERSION_CODE && \
-	  KERNEL_VERSION(4, 9, 68) <= LINUX_VERSION_CODE))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0) || \
+	 (LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0) && \
+	  LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 68)))
 	if (dma_fence_is_signaled(kcb->fence) && kcb->fence->error)
 #else
 	if (dma_fence_is_signaled(kcb->fence) && kcb->fence->status < 0)
@@ -288,9 +288,9 @@ static void kbase_sync_fence_info_get(struct dma_fence *fence,
 	 * 1 : signaled
 	 */
 	if (dma_fence_is_signaled(fence)) {
-#if (KERNEL_VERSION(4, 11, 0) <= LINUX_VERSION_CODE || \
-	 (KERNEL_VERSION(4, 10, 0) > LINUX_VERSION_CODE && \
-	  KERNEL_VERSION(4, 9, 68) <= LINUX_VERSION_CODE))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0) || \
+	 (LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0) && \
+	  LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 68)))
 		int status = fence->error;
 #else
 		int status = fence->status;

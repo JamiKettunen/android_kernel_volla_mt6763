@@ -24,7 +24,7 @@
 #include <linux/scatterlist.h>
 #include <linux/fs.h>
 #include <linux/version.h>
-#if KERNEL_VERSION(4, 11, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
 #include <linux/sched/clock.h>	/* local_clock */
 #include <linux/sched/task.h>	/* put_task_struct */
 #endif
@@ -32,7 +32,7 @@
 #include "public/mc_user.h"
 #include "public/mc_admin.h"
 
-#if KERNEL_VERSION(3, 5, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 5, 0)
 #include <linux/uidgid.h>
 #else
 #define kuid_t uid_t
@@ -189,7 +189,7 @@ static void wsm_free(struct tee_session *session, struct tee_wsm *wsm)
 	wsm->state = TEE_WSM_EMPTY;
 }
 
-#if KERNEL_VERSION(4, 6, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
 static int hash_path_and_data(struct task_struct *task, u8 *hash,
 			      const void *data, unsigned int data_len)
 {
@@ -326,7 +326,7 @@ end:
 }
 #endif
 
-#if KERNEL_VERSION(4, 9, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 #define GROUP_AT(gi, i) ((gi)->gid[i])
 #endif
 

@@ -101,13 +101,13 @@ static int ut_smc_call(void *buff)
 		KTHREAD_WORK_INIT(usc_work.work, switch_fn),
 		.data = buff,
 	};
-#if KERNEL_VERSION(4, 9, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 	if (!kthread_queue_work(&ut_fastcall_worker, &usc_work.work))
 #else
 	if (!queue_kthread_work(&ut_fastcall_worker, &usc_work.work))
 #endif
 		return -1;
-#if KERNEL_VERSION(4, 9, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
 	kthread_flush_work(&usc_work.work);
 #else
 	flush_kthread_work(&usc_work.work);

@@ -1065,7 +1065,7 @@ static struct kbase_va_region *kbase_mem_from_user_buffer(
 	user_buf->address = address;
 	user_buf->nr_pages = *va_pages;
 	user_buf->mm = current->mm;
-#if KERNEL_VERSION(4, 11, 0) > LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
 	atomic_inc(&current->mm->mm_count);
 #else
 	mmgrab(current->mm);

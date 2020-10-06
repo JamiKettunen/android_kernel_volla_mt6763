@@ -27,7 +27,7 @@
 #include <linux/freezer.h>
 #include <asm/barrier.h>
 #include <linux/version.h>
-#if KERNEL_VERSION(4, 11, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
 #include <linux/sched/clock.h>	/* local_clock */
 #endif
 

@@ -3804,7 +3804,7 @@ kalIndicateBssInfo(IN P_GLUE_INFO_T prGlueInfo,
  *           none
  */
 /*----------------------------------------------------------------------------*/
-#if KERNEL_VERSION(4, 8, 0) <= LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
 void kalCfg80211ScanDone(struct cfg80211_scan_request *request, bool aborted)
 {
 	struct cfg80211_scan_info info = { .aborted = aborted };

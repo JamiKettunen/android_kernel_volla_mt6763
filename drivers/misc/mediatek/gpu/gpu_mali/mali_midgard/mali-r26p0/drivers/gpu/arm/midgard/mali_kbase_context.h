@@ -83,7 +83,7 @@ static inline bool kbase_ctx_flag(struct kbase_context *kctx,
 static inline void kbase_ctx_flag_clear(struct kbase_context *kctx,
 					enum kbase_context_flags flag)
 {
-#if KERNEL_VERSION(4, 3, 0) > LINUX_VERSION_CODE
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 3, 0)
 	/*
 	 * Earlier kernel versions doesn't have atomic_andnot() or
 	 * atomic_and(). atomic_clear_mask() was only available on some

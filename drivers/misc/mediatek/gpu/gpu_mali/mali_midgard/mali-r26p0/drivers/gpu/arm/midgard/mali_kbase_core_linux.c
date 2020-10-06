@@ -83,7 +83,7 @@
 #include <mali_kbase_config.h>
 
 
-#if (KERNEL_VERSION(3, 13, 0) <= LINUX_VERSION_CODE)
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 13, 0))
 #include <linux/pm_opp.h>
 #else
 #include <linux/opp.h>
@@ -425,11 +425,11 @@ static int kbase_open(struct inode *inode, struct file *filp)
 	if (!kbdev)
 		return -ENODEV;
 
-#if (KERNEL_VERSION(4, 6, 0) <= LINUX_VERSION_CODE)
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0))
 	kctx = kbase_create_context(kbdev, in_compat_syscall());
 #else
 	kctx = kbase_create_context(kbdev, is_compat_task());
-#endif /* (KERNEL_VERSION(4, 6, 0) <= LINUX_VERSION_CODE) */
+#endif /* (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)) */
 	if (!kctx) {
 		ret = -ENOMEM;
 		goto out;

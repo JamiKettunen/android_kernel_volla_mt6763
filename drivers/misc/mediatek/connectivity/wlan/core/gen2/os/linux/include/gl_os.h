@@ -125,7 +125,7 @@
 #include <linux/delay.h>	/* udelay and mdelay macro */
 
 #if CONFIG_ANDROID
-#if (KERNEL_VERSION(4, 9, 0) <= LINUX_VERSION_CODE)
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0))
 #include <linux/device.h>
 #include <linux/pm_wakeup.h>
 #else
