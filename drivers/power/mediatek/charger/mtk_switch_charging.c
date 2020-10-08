@@ -649,7 +649,7 @@ static int mtk_switch_chr_cc(struct charger_manager *info)
 	if (chg_done) {
 		swchgalg->state = CHR_BATFULL;
 		charger_dev_do_event(info->chg1_dev, EVENT_EOC, 0);
-		chr_err("battery full!\n");
+		chr_debug("battery full!\n");
 	}
 
 	/* If it is not disabled by throttling,

@@ -330,7 +330,7 @@ void md_cd_traffic_monitor_func(unsigned long data)
 
 	i = NET_TX_FIRST_QUE;
 	if (i + 3 < CLDMA_TXQ_NUM)
-		CCCI_NORMAL_LOG(md_ctrl->md_id, TAG, "net Txq%d-%d(status=0x%x):%d-%d, %d-%d, %d-%d, %d-%d\n",
+		CCCI_DEBUG_LOG(md_ctrl->md_id, TAG, "net Txq%d-%d(status=0x%x):%d-%d, %d-%d, %d-%d, %d-%d\n",
 			i, i + 3, cldma_read32(md_ctrl->cldma_ap_pdn_base, CLDMA_AP_UL_STATUS),
 			md_ctrl->tx_pre_traffic_monitor[i], md_ctrl->tx_traffic_monitor[i],
 			md_ctrl->tx_pre_traffic_monitor[i + 1], md_ctrl->tx_traffic_monitor[i + 1],
