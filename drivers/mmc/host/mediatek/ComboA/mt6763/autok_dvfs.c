@@ -18,7 +18,7 @@
 #include <linux/fs.h>
 
 #include "autok_dvfs.h"
-#include "mtk_sd.h"
+#include "../mtk_sd.h"
 #include <mmc/core/sdio_ops.h>
 
 static char const * const sdio_autok_res_path[] = {

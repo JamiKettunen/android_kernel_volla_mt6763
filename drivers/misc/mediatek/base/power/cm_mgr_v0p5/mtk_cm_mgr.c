@@ -46,7 +46,7 @@
 #include <trace/events/mtk_events.h>
 #include <mt-plat/met_drv.h>
 
-#include <mtk_cm_mgr.h>
+#include "mtk_cm_mgr.h"
 #include <mtk_cpufreq_api.h>
 
 spinlock_t cm_mgr_lock;
