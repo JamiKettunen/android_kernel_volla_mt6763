@@ -57,7 +57,7 @@
 #include "fbt_usedext.h"
 #include "fbt_notifier.h"
 #include "fbt_cpu.h"
-#include "../fstb/fstb.h"
+#include "../../fstb/fstb.h"
 #include "xgf.h"
 #include "fbt_cpu_platform.h"
 

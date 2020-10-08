@@ -61,7 +61,7 @@
 #include <mt-plat/mtk_battery.h>
 #include <mt-plat/mtk_boot.h>
 
-#include <mtk_gauge_class.h>
+#include "mtk_gauge_class.h"
 #include "mtk_battery_internal.h"
 #include <mach/mtk_battery_property.h>
 #include <mtk_gauge_time_service.h>
