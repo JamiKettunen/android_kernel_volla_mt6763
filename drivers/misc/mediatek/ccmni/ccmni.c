@@ -375,7 +375,7 @@ static int ccmni_open(struct net_device *dev)
 		atomic_set(&ccmni_tmp->usage, usage_cnt);
 	}
 
-	CCMNI_INF_MSG(ccmni->md_id, "%s_Open:cnt=(%d,%d), md_ab=0x%X, gro=(%llx, %ld), flt_cnt=%d\n",
+	CCMNI_DBG_MSG(ccmni->md_id, "%s_Open:cnt=(%d,%d), md_ab=0x%X, gro=(%llx, %ld), flt_cnt=%d\n",
 		      dev->name, atomic_read(&ccmni->usage),
 		      atomic_read(&ccmni_tmp->usage), ccmni_ctl->ccci_ops->md_ability,
 		      dev->features, gro_flush_timer, ccmni->flt_cnt);
@@ -1342,7 +1342,7 @@ static void ccmni_dump(int md_id, int ccmni_idx, unsigned int flag)
 		ack_qdisc = ack_queue->qdisc;
 		/* stats.rx_dropped is dropped in ccmni, dev->rx_dropped is dropped in net device layer */
 		/* stats.tx_packets is count by ccmni, bstats.packets is count by qdisc in net device layer */
-		CCMNI_INF_MSG(md_id,
+		CCMNI_DBG_MSG(md_id,
 			      "%s(%d,%d), irat_MD%d, rx=(%ld,%ld,%d), tx=(%ld,%d,%d), txq_len=(%d,%d), tx_drop=(%ld,%d,%d), rx_drop=(%ld,%ld), tx_busy=(%ld,%ld), sta=(0x%lx,0x%x,0x%lx,0x%lx)\n",
 			      dev->name, atomic_read(&ccmni->usage), atomic_read(&ccmni_tmp->usage), (ccmni->md_id + 1),
 			      dev->stats.rx_packets, dev->stats.rx_bytes, ccmni->rx_gro_cnt,
@@ -1353,7 +1353,7 @@ static void ccmni_dump(int md_id, int ccmni_idx, unsigned int flag)
 			      ccmni->tx_busy_cnt[0], ccmni->tx_busy_cnt[1],
 			      dev->state, dev->flags, dev_queue->state, ack_queue->state);
 	} else
-		CCMNI_INF_MSG(md_id,
+		CCMNI_DBG_MSG(md_id,
 			      "%s(%d,%d), irat_MD%d, rx=(%ld,%ld,%d), tx=(%ld,%ld), txq_len=%d, tx_drop=(%ld,%d), rx_drop=(%ld,%ld), tx_busy=(%ld,%ld), sta=(0x%lx,0x%x,0x%lx)\n",
 			      dev->name, atomic_read(&ccmni->usage), atomic_read(&ccmni_tmp->usage), (ccmni->md_id + 1),
 			      dev->stats.rx_packets, dev->stats.rx_bytes, ccmni->rx_gro_cnt,
