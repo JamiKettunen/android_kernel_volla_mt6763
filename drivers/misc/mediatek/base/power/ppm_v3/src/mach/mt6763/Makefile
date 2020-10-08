@@ -14,7 +14,8 @@
 ccflags-y +=	\
 	-I$(PPM_ROOT_DIR)/inc \
 	-I$(srctree)/drivers/misc/mediatek/base/power/$(CONFIG_MTK_PLATFORM)/	\
-	-I$(srctree)/drivers/misc/mediatek/base/power/include
+	-I$(srctree)/drivers/misc/mediatek/base/power/include \
+	-I$(src) # current dir
 
 # platform dependent functions
 obj-y += mtk_ppm_platform.o

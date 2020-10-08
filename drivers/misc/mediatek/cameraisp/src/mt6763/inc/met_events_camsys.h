@@ -99,7 +99,7 @@ TRACE_EVENT(ISP_Pass1_CAM_leave,
 
 /* This part must be outside protection */
 #undef TRACE_INCLUDE_PATH
-#define TRACE_INCLUDE_PATH ./inc
+#define TRACE_INCLUDE_PATH ../../drivers/misc/mediatek/cameraisp/src/mt6763/inc
 #undef TRACE_INCLUDE_FILE
 #define TRACE_INCLUDE_FILE met_events_camsys
 #include <trace/define_trace.h>

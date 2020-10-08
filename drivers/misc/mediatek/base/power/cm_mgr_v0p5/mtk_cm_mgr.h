@@ -15,7 +15,7 @@
 #define __MTK_CM_MGR_H__
 
 #if defined(CONFIG_MACH_MT6763)
-#include <mtk_cm_mgr_mt6763.h>
+#include "mtk_cm_mgr_mt6763.h"
 #endif
 
 #include <linux/kernel.h>

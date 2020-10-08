@@ -20,7 +20,7 @@
 #endif
 
 #include "mtk_gauge_class.h"
-#include <mtk_battery_internal.h>
+#include "mtk_battery_internal.h"
 
 static struct list_head coulomb_head_plus = LIST_HEAD_INIT(coulomb_head_plus);
 static struct list_head coulomb_head_minus = LIST_HEAD_INIT(coulomb_head_minus);
