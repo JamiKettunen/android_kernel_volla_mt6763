@@ -519,12 +519,12 @@ static int ccci_rpc_remap_queue(int md_id, struct ccci_rpc_queue_mapping *remap)
 		/*normal queue*/
 		port->txq_index = 0;
 		port->txq_exp_index = 0xF0 | 0x1;
-		CCCI_NORMAL_LOG(md_id, RPC, "remap port %s Tx to cldma%d\n", port->name, port->txq_index);
+		CCCI_DEBUG_LOG(md_id, RPC, "remap port %s Tx to cldma%d\n", port->name, port->txq_index);
 	} else if (remap->lhif_q == LHIF_HWQ_AP_UL_Q1) {
 		/*IMS queue*/
 		port->txq_index = 3;
 		port->txq_exp_index = 0xF0 | 0x3;
-		CCCI_NORMAL_LOG(md_id, RPC, "remap port %s Tx to cldma%d\n", port->name, port->txq_index);
+		CCCI_DEBUG_LOG(md_id, RPC, "remap port %s Tx to cldma%d\n", port->name, port->txq_index);
 	} else
 		CCCI_ERROR_LOG(md_id, RPC, "invalid remap for q%d\n", remap->lhif_q);
 
@@ -939,7 +939,7 @@ static void ccci_rpc_work_helper(struct port_t *port, struct rpc_pkt *pkt,
 				break;
 			}
 
-			CCCI_NORMAL_LOG(md_id, RPC, "op_id[0x%X]: pkt_num=%d, pkt[0] len %u!\n",
+			CCCI_DEBUG_LOG(md_id, RPC, "op_id[0x%X]: pkt_num=%d, pkt[0] len %u!\n",
 				     p_rpc_buf->op_id, pkt_num, pkt[0].len);
 
 			remap = (struct ccci_rpc_queue_mapping *)(pkt[0].buf);

@@ -161,7 +161,7 @@ static void alarm_set(enum android_alarm_type alarm_type, struct timespec *ts)
 	u32 alarm_type_mask = 1U << alarm_type;
 	unsigned long flags;
 
-	pr_notice("alarm %d set %ld.%09ld\n", alarm_type, ts->tv_sec, ts->tv_nsec);
+	pr_debug("alarm %d set %ld.%09ld\n", alarm_type, ts->tv_sec, ts->tv_nsec);
 	if (alarm_type == ANDROID_ALARM_POWER_ON) {
 		alarm_set_power_on(*ts, false);
 		return;
