@@ -63,7 +63,7 @@
 #include <mtk_hps_internal.h>
 #endif
 
-#include <mtk_spm_sleep_internal.h>
+#include "mtk_spm_sleep_internal.h"
 
 static int spm_dormant_sta;
 int spm_ap_mdsrc_req_cnt;

@@ -29,7 +29,7 @@
 
 #include <linux/uaccess.h>
 #include <linux/types.h>
-#include <mtk_wdt.h>
+#include "mtk_wdt.h"
 #include <linux/delay.h>
 
 #include <linux/device.h>
