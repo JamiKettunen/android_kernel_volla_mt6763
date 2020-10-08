@@ -116,3 +116,10 @@ all.config
 
 # fetched Android config fragments
 android/configs/android-*.cfg
+
+# Crap from this Android kernel tree
+/out
+/rootfs
+/dtboimg.cfg
+/*.img
+*.dtb*
