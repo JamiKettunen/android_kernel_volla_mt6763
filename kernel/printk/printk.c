@@ -885,6 +885,12 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 		}
 	}
 
+	// HACK: Ignore kmsg spam logs about battery status from Android healthd binary
+	if (strncmp("healthd", line, 7) == 0) {
+		kfree(buf);
+		return len;
+	}
+
 	printk_emit(facility, level, NULL, 0, "%s", line);
 	kfree(buf);
 	return ret;
