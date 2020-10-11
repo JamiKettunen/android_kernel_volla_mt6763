@@ -926,7 +926,7 @@ static struct SV_LOG_STR gSvLog[ISP_IRQ_TYPE_AMOUNT];
 		do_div(sec, 1000);    \
 		usec = do_div(sec, 1000000);\
 	}
-#if 1
+#ifdef ISP_DEBUG
 #define IRQ_LOG_KEEPER(irq, ppb, logT, fmt, ...) do {\
 	char *ptr; \
 	char *pDes;\
@@ -1009,7 +1009,7 @@ static struct SV_LOG_STR gSvLog[ISP_IRQ_TYPE_AMOUNT];
 	} \
 } while (0)
 #else
-#define IRQ_LOG_KEEPER(irq, ppb, logT, fmt, args...)    pr_warn(IRQTag fmt,  ##args)
+#define IRQ_LOG_KEEPER(irq, ppb, logT, fmt, args...)
 #endif
 
 #if 1
