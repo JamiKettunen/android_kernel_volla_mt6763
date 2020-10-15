@@ -38,7 +38,7 @@ extern int nand_scan_ident(struct mtd_info *mtd, int max_chips,
 			   struct nand_flash_dev *table);
 extern int nand_scan_tail(struct mtd_info *mtd);
 
-/* Free resources held by the NAND device */
+/* Unregister the MTD device and free resources held by the NAND device */
 extern void nand_release(struct mtd_info *mtd);
 
 /* Internal helper for board drivers which need to override command function */
@@ -1103,6 +1103,9 @@ int nand_check_erased_ecc_chunk(void *data, int datalen,
 				void *extraoob, int extraooblen,
 				int threshold);
 
+/* Free resources held by the NAND device */
+void nand_cleanup(struct nand_chip *chip);
+
 #ifdef CONFIG_MTK_MTD_NAND
 extern void nand_enable_clock(void);
 extern void nand_disable_clock(void);
@@ -1129,4 +1132,5 @@ extern int mtk_nand_init_size(struct mtd_info *mtd, struct nand_chip *this, u8 *
 #define PMT_POOL_SIZE (2)
 
 int nand_get_device(struct mtd_info *mtd, int new_state);
+
 #endif /* __LINUX_MTD_NAND_H */
