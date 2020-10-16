@@ -10,7 +10,7 @@
 The currently used & tested working build env consists of (others should work fine as well):
 * An x86-64 Ubuntu 20.10 (-based) distro
 * binutils 2.35
-* GCC 10.2.0
+* GCC 10.2
 
 ### Dependencies
 
@@ -38,9 +38,9 @@ mka
 
 ### Halium ramdisk
 ```bash
-curl -L https://github.com/Halium/initramfs-tools-halium/releases/download/continuous/initrd.img-touch-arm64 -o halium-ramdisk.tar.gz
+curl -L https://github.com/Halium/initramfs-tools-halium/releases/download/continuous/initrd.img-touch-arm64 -o halium-ramdisk.cpio.gz
 ```
-**NOTE:** Replace `/dev/null` below with `halium-ramdisk.tar.gz` (make sure your branch is `halium-9.0`!)
+**NOTE:** Replace `/dev/null` below with `halium-ramdisk.cpio.gz` (make sure your branch is `halium-9.0`!)
 
 ### Android bootimg
 ```bash
