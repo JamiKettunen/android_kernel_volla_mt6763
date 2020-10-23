@@ -91,5 +91,6 @@ EOF
 ## Links
 * [Default README](README)
 * [HelloVolla's kernel tree](https://github.com/HelloVolla/android_kernel_volla_mt6763)
+* [Google's common 4.4 Android Pie kernel](https://android.googlesource.com/kernel/common/+/refs/heads/android-4.4-p)
 * [Upstream linux-stable 4.4.y tree](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/log/?h=linux-4.4.y)
 * [Ubuntu 20.10 Minimal Cloud Image](https://partner-images.canonical.com/core/groovy/current/ubuntu-groovy-core-cloudimg-amd64-root.tar.gz)
