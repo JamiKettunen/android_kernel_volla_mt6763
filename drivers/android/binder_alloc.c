@@ -219,6 +219,11 @@ static int binder_update_page_range(struct binder_alloc *alloc, int allocate,
 
 	if (mm) {
 		down_read(&mm->mmap_sem);
+		if (!mmget_still_valid(mm)) {
+			if (allocate == 0)
+				goto free_range;
+			goto err_no_vma;
+		}
 		vma = alloc->vma;
 	}
 
@@ -691,6 +696,11 @@ int binder_alloc_mmap_handler(struct binder_alloc *alloc,
 		}
 	}
 #endif
+	if (vma->vm_end - vma->vm_start < BINDER_MIN_ALLOC) {
+		ret = -EINVAL;
+		failure_string = "VMA size < BINDER_MIN_ALLOC";
+		goto err_vma_too_small;
+	}
 	alloc->pages = kzalloc(sizeof(alloc->pages[0]) *
 				   ((vma->vm_end - vma->vm_start) / PAGE_SIZE),
 			       GFP_KERNEL);
@@ -725,6 +735,7 @@ err_alloc_buf_struct_failed:
 	kfree(alloc->pages);
 	alloc->pages = NULL;
 err_alloc_pages_failed:
+err_vma_too_small:
 	mutex_lock(&binder_alloc_mmap_lock);
 	vfree(alloc->buffer);
 	alloc->buffer = NULL;
@@ -926,8 +937,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
 	page_addr = (uintptr_t)alloc->buffer + index * PAGE_SIZE;
 
 	mm = alloc->vma_vm_mm;
-	/* Same as mmget_not_zero() in later kernel versions */
-	if (!atomic_inc_not_zero(&alloc->vma_vm_mm->mm_users))
+	if (!atomic_inc_not_zero(&mm->mm_users))
 		goto err_mmget;
 	if (!down_write_trylock(&mm->mmap_sem))
 		goto err_down_write_mmap_sem_failed;
