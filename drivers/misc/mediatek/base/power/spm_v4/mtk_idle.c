@@ -51,7 +51,8 @@
 
 #include <trace/events/mtk_idle_event.h>
 
-#include "ufs-mtk.h"
+// Commented out since OEM changes to drivers/scsi were dropped.
+//#include "ufs-mtk.h"
 
 #ifdef CONFIG_MTK_DCS
 #include <mt-plat/mtk_meminfo.h>
