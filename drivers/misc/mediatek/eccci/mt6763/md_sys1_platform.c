@@ -1125,7 +1125,7 @@ void ccci_modem_restore_reg(struct ccci_modem *md)
 			CCCI_DEBUG_LOG(md->index, TAG, "Resume cldma ao register: No need  ...\n");
 		spin_unlock_irqrestore(&md_ctrl->cldma_timeout_lock, flags);
 	} else {
-		CCCI_NORMAL_LOG(md->index, TAG, "Resume cldma pdn register ...11\n");
+		CCCI_DEBUG_LOG(md->index, TAG, "Resume cldma pdn register ...11\n");
 		spin_lock_irqsave(&md_ctrl->cldma_timeout_lock, flags);
 #ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
 		/* re-config 8G mode flag for pd register*/
@@ -1186,7 +1186,7 @@ void ccci_modem_restore_reg(struct ccci_modem *md)
 		cldma_write32(md_ctrl->cldma_ap_pdn_base, CLDMA_AP_L3RIMCR0, CLDMA_BM_INT_ALL);
 		cldma_write32(md_ctrl->cldma_ap_pdn_base, CLDMA_AP_L3RIMCR1, CLDMA_BM_INT_ALL);
 		spin_unlock_irqrestore(&md_ctrl->cldma_timeout_lock, flags);
-		CCCI_NORMAL_LOG(md->index, TAG, "Resume cldma pdn register done\n");
+		CCCI_DEBUG_LOG(md->index, TAG, "Resume cldma pdn register done\n");
 	}
 }
 
