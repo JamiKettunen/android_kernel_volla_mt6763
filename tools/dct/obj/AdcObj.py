@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2016 MediaTek Inc.
@@ -77,9 +77,9 @@ class AdcObj(ModuleObj):
             value = ModuleObj.get_data(self)[key]
 
             if value == "TEMPERATURE":
-                gen_str += '''\t\tmediatek,%s0 = <%d>;\n''' %(value.lower(), string.atoi(key[3:]))
+                gen_str += '''\t\tmediatek,%s0 = <%d>;\n''' %(value.lower(), int(key[3:]))
             else:
-                gen_str += '''\t\tmediatek,%s = <%d>;\n''' %(value.lower(), string.atoi(key[3:]))
+                gen_str += '''\t\tmediatek,%s = <%d>;\n''' %(value.lower(), int(key[3:]))
 
         gen_str += '''\t\tstatus = \"okay\";\n'''
         gen_str += '''\t};\n'''

@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2016 MediaTek Inc.
@@ -16,30 +16,30 @@ import os, sys
 import collections
 import xml.dom.minidom
 
-from GpioObj import GpioObj
-from GpioObj import GpioObj_whitney
-from GpioObj import GpioObj_MT6759
-from GpioObj import GpioObj_MT6739
-from GpioObj import GpioObj_MT6771
-from GpioObj import GpioObj_MT6763
-from EintObj import EintObj
-from EintObj import EintObj_MT6750S
-from EintObj import EintObj_MT6739
-from AdcObj import AdcObj
-from ClkObj import ClkObj
-from ClkObj import ClkObj_Everest
-from ClkObj import ClkObj_Olympus
-from ClkObj import ClkObj_Rushmore
-from I2cObj import I2cObj
-from I2cObj import I2cObj_MT6759
-from I2cObj import I2cObj_MT6775
-from PmicObj import PmicObj
-from PmicObj import PmicObj_MT6758
-from Md1EintObj import Md1EintObj
-from Md1EintObj import Md1EintObj_MT6739
-from PowerObj import PowerObj
-from KpdObj import KpdObj
-from ModuleObj import ModuleObj
+from obj.GpioObj import GpioObj
+from obj.GpioObj import GpioObj_whitney
+from obj.GpioObj import GpioObj_MT6759
+from obj.GpioObj import GpioObj_MT6739
+from obj.GpioObj import GpioObj_MT6771
+from obj.GpioObj import GpioObj_MT6763
+from obj.EintObj import EintObj
+from obj.EintObj import EintObj_MT6750S
+from obj.EintObj import EintObj_MT6739
+from obj.AdcObj import AdcObj
+from obj.ClkObj import ClkObj
+from obj.ClkObj import ClkObj_Everest
+from obj.ClkObj import ClkObj_Olympus
+from obj.ClkObj import ClkObj_Rushmore
+from obj.I2cObj import I2cObj
+from obj.I2cObj import I2cObj_MT6759
+from obj.I2cObj import I2cObj_MT6775
+from obj.PmicObj import PmicObj
+from obj.PmicObj import PmicObj_MT6758
+from obj.Md1EintObj import Md1EintObj
+from obj.Md1EintObj import Md1EintObj_MT6739
+from obj.PowerObj import PowerObj
+from obj.KpdObj import KpdObj
+from obj.ModuleObj import ModuleObj
 
 from utility.util import log
 from utility.util import LogLevel
@@ -166,7 +166,7 @@ class ChipObj:
             # return True
 
         for para in paras:
-            if cmp(para, 'cust_dtsi') == 0:
+            if para == 'cust_dtsi':
                 self.gen_custDtsi()
                 continue
 
@@ -198,7 +198,7 @@ class ChipObj:
         #sorted_list = sorted(self.__objs.keys())
         #for tag in sorted_list:
         for tag in self.__objs.keys():
-            if cmp(tag, 'gpio') == 0:
+            if tag == 'gpio':
                 gpioObj = self.create_obj(tag)
                 gen_str += ModuleObj.writeHeader(gpioObj.get_dtsiFileName())
                 gen_str += gpioObj.fill_mapping_dtsiFile()
