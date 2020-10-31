@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2016 MediaTek Inc.
@@ -15,11 +15,11 @@
 import os
 import re
 import string
-import ConfigParser
+import configparser
 
 import xml.dom.minidom
 
-from ModuleObj import ModuleObj
+from obj.ModuleObj import ModuleObj
 from data.ClkData import ClkData
 from utility.util import log
 from utility.util import LogLevel
@@ -46,7 +46,7 @@ class ClkObj(ModuleObj):
                 key = re.findall(r'\D+', node.nodeName)[0].upper() + self.__suffix + '%s' %(re.findall(r'\d+', node.nodeName)[0])
 
                 if key not in ModuleObj.get_data(self):
-	                continue;
+                    continue
 
                 data = ModuleObj.get_data(self)[key]
 
@@ -61,17 +61,17 @@ class ClkObj(ModuleObj):
         return True
 
     def get_cfgInfo(self):
-        cp = ConfigParser.ConfigParser(allow_no_value=True)
+        cp = configparser.ConfigParser(allow_no_value=True, strict=False)
         cp.read(ModuleObj.get_figPath())
 
-        count = string.atoi(cp.get('CLK_BUF', 'CLK_BUF_COUNT'))
+        count = int(cp.get('CLK_BUF', 'CLK_BUF_COUNT'))
         self.__count = count
 
         ops = cp.options('CLK_BUF')
         for op in ops:
             if op == 'clk_buf_count':
-                self.__count = string.atoi(cp.get('CLK_BUF', op))
-                ClkData._count = string.atoi(cp.get('CLK_BUF', op))
+                self.__count = int(cp.get('CLK_BUF', op))
+                ClkData._count = int(cp.get('CLK_BUF', op))
                 continue
 
             value = cp.get('CLK_BUF', op)
@@ -79,8 +79,8 @@ class ClkObj(ModuleObj):
 
             data = ClkData()
             data.set_curList(var_list[2:])
-            data.set_defVarName(string.atoi(var_list[0]))
-            data.set_defCurrent(string.atoi(var_list[1]))
+            data.set_defVarName(int(var_list[0]))
+            data.set_defCurrent(int(var_list[1]))
 
             key = op[16:].upper()
             ModuleObj.set_data(self, key, data)
@@ -118,7 +118,7 @@ class ClkObj(ModuleObj):
         for key in sorted_key(ModuleObj.get_data(self).keys()):
             value = ModuleObj.get_data(self)[key]
             idx = value.get_curList().index(value.get_current())
-            if cmp(value.get_curList()[0], DEFAULT_AUTOK) == 0:
+            if value.get_curList()[0] == DEFAULT_AUTOK:
                 idx -= 1
 
             if idx >= 0:
@@ -153,7 +153,7 @@ class ClkObj(ModuleObj):
                 continue
             value = ModuleObj.get_data(self)[key]
             idx = value.get_curList().index(value.get_current())
-            if cmp(value.get_curList()[0], DEFAULT_AUTOK) == 0:
+            if value.get_curList()[0] == DEFAULT_AUTOK:
                 idx -= 1
             if idx < 0:
                 gen_str += '''(%d) ''' %(-1)
@@ -257,7 +257,7 @@ class ClkObj_Everest(ClkObj):
             value = ModuleObj.get_data(self)[key]
             if key.find(self.__rf) != -1:
                 idx = value.get_curList().index(value.get_current())
-                if cmp(value.get_curList()[0], DEFAULT_AUTOK) == 0:
+                if value.get_curList()[0] == DEFAULT_AUTOK:
                     idx -= 1
                 gen_str += '''%d ''' %(idx)
 
@@ -320,7 +320,7 @@ class ClkObj_Olympus(ClkObj_Everest):
                 continue
             value = ModuleObj.get_data(self)[key]
             idx = value.get_curList().index(value.get_current())
-            if cmp(value.get_curList()[0], DEFAULT_AUTOK) == 0:
+            if value.get_curList()[0] == DEFAULT_AUTOK:
                 idx -= 1
 
             if idx >= 0:
@@ -336,7 +336,7 @@ class ClkObj_Olympus(ClkObj_Everest):
                 continue
             value = ModuleObj.get_data(self)[key]
             idx = value.get_curList().index(value.get_current())
-            if cmp(value.get_curList()[0], DEFAULT_AUTOK) == 0:
+            if value.get_curList()[0] == DEFAULT_AUTOK:
                 idx -= 1
 
             if idx >= 0:
@@ -358,10 +358,10 @@ class ClkObj_Rushmore(ClkObj):
         ClkObj.parse(self, node)
 
     def get_cfgInfo(self):
-        cp = ConfigParser.ConfigParser(allow_no_value=True)
+        cp = configparser.ConfigParser(allow_no_value=True, strict=False)
         cp.read(ModuleObj.get_figPath())
 
-        count = string.atoi(cp.get('CLK_BUF', 'CLK_BUF_COUNT'))
+        count = int(cp.get('CLK_BUF', 'CLK_BUF_COUNT'))
         self.__count = count
 
     def read(self, node):
@@ -416,7 +416,7 @@ class ClkObj_Rushmore(ClkObj):
                 continue
             value = ModuleObj.get_data(self)[key]
             idx = value.get_curList().index(value.get_current())
-            if cmp(value.get_curList()[0], DEFAULT_AUTOK) == 0:
+            if value.get_curList()[0] == DEFAULT_AUTOK:
                 idx -= 1
 
             if idx >= 0:
