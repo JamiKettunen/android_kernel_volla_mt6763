@@ -226,14 +226,14 @@ int ff_ctl_free_pins(void)
 int ff_ctl_enable_spiclk(bool on)
 {
     int err = 0;
-    printk("'%s' enter.", __func__);
+    pr_debug("'%s' enter.", __func__);
     FF_LOGD("clock: '%s'.", on ? "enable" : "disabled");
 
     if (unlikely(!g_context->spiclk)) {
         return (-ENOSYS);
     }
 	
-	printk("focal '%s' b_spiclk_enabled = %d. \n", __func__, g_context->b_spiclk_enabled);
+	pr_debug("focal '%s' b_spiclk_enabled = %d. \n", __func__, g_context->b_spiclk_enabled);
 
 #if !defined(CONFIG_MTK_CLKMGR)
     /* Prepare the clock source. */
@@ -262,7 +262,7 @@ int ff_ctl_enable_spiclk(bool on)
         g_context->b_spiclk_enabled = false;
     }
 
-    printk("'%s' leave.", __func__);
+    pr_debug("'%s' leave.", __func__);
     return err;
 }
 

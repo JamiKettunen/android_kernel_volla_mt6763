@@ -580,7 +580,7 @@ int enter_pasr_dpd_config(unsigned char segment_rank0,
 #if !__ETT__
 	unsigned long save_flags;
 
-	pr_warn("[DRAMC0] PASR r0 = 0x%x  r1 = 0x%x\n", (segment_rank0 & 0xFF), (segment_rank1 & 0xFF));
+	pr_debug("[DRAMC0] PASR r0 = 0x%x  r1 = 0x%x\n", (segment_rank0 & 0xFF), (segment_rank1 & 0xFF));
 	local_irq_save(save_flags);
 	if (acquire_dram_ctrl() != 0) {
 		pr_warn("[DRAMC0] can NOT get SPM HW SEMAPHORE!\n");
