@@ -177,7 +177,7 @@ static int cpu_psci_cpu_kill(unsigned int cpu)
 		TIMESTAMP_REC(hotplug_ts_rec, TIMESTAMP_FILTER,  cpu, 0, 0, 0);
 
 		if (err == PSCI_0_2_AFFINITY_LEVEL_OFF) {
-			pr_info("CPU%d killed (polled %d ms)\n", cpu,
+			pr_debug("CPU%d killed (polled %d ms)\n", cpu,
 				jiffies_to_msecs(jiffies - start));
 			return 0;
 		}
