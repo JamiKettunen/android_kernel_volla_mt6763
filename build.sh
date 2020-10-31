@@ -4,7 +4,7 @@ set -e
 # Config
 DEFCONFIG="k63v2_64_bsp_defconfig"
 SAVEDEFCONFIG=1
-RAMDISK=""
+RAMDISK="halium-ramdisk.cpio.gz"
 BUILD_JOBS="$(nproc)"
 CCACHE_DISABLE="1"    # 1|0
 ODIR=".out"           # use "" for in-tree building
@@ -56,7 +56,12 @@ echo ">> Starting kernel build with $BUILD_JOBS jobs..."
 sleep 1
 eval time $MAKE -j$BUILD_JOBS
 
-if [ -z "$RAMDISK" ]; then
+if [ ! -z "$RAMDISK" ]; then
+	if [ ! -f "$RAMDISK" ]; then
+		echo ">> Fetching halium-ramdisk.cpio.gz..."
+		curl -L https://github.com/Halium/initramfs-tools-halium/releases/download/continuous/initrd.img-touch-arm64 -o "$RAMDISK"
+	fi
+else
 	RAMDISK="/dev/null"
 fi
 echo ">> Creating Android boot.img..."
