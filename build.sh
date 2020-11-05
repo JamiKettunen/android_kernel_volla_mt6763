@@ -9,7 +9,7 @@ BUILD_JOBS="$(nproc)"
 CCACHE_DISABLE="1"    # 1|0
 ODIR=".out"           # use "" for in-tree building
 ARCH="arm64"
-MAKE="make O=$ODIR ARCH=$ARCH CROSS_COMPILE=aarch64-linux-gnu-"
+MAKE="make O=$ODIR ARCH=$ARCH CROSS_COMPILE=aarch64-linux-gnu- CC=clang"
 #PATH="/path/to/toolchain/bins:$PATH"
 
 # Script
