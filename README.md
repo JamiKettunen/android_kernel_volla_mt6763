@@ -35,6 +35,7 @@ The currently used & tested working build env consists of (others should work fi
 ```
 # pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc python3 bc android-tools kmod
 ```
+**NOTE:** If you're building with `CC=clang`, additionally install the `clang` package!
 
 ### Kernel build
 The process should be straight forward following the prompts from the [build.sh](build.sh) script:
