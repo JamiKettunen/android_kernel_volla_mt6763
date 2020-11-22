@@ -6,6 +6,11 @@ TARGET_DEVICE="yggdrasil"
 TARGET_PROP="ro.build.product"
 
 # Script
+if [ -e backup.sh ]; then
+	read -p ">> Would you like to backup the current kernel & modules on the device (y/N)? " ans
+	[[ "${ans:0:1}" = "Y" || "${ans:0:1}" = "y" ]] && source backup.sh
+fi
+
 cd "$(dirname "$0")"
 if [[ ! -e boot.img || ! -e kernel-modules.tar.gz ]]; then
 	echo ">> ERROR: Please place a 'boot.img' along with 'kernel-modules.tar.gz' in the"
@@ -29,7 +34,7 @@ if [ "$device" != "$TARGET_DEVICE" ]; then
 fi
 
 echo ">> Detected your '$device' in recovery mode; pushing & flashing kernel build artifacts..."
-adb push {boot.img,kernel-modules.tar.gz} /tmp
+adb push boot.img kernel-modules.tar.gz /tmp
 adb shell << EOF
 dd bs=4M if=/tmp/boot.img of=/dev/block/bootdevice/by-name/boot
 if [ -e /system/var/lib/lxc/android/android-rootfs.img ]; then
