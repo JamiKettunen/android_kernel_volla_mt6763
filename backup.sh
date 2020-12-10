@@ -9,7 +9,7 @@ BACKUP_DIR=".backup"
 # Script
 cd "$(dirname "$0")"
 if [[ -e "$BACKUP_DIR"/boot.img || -e "$BACKUP_DIR"/kernel-modules.tar.gz ]]; then
-	read -p ">> Backed up kernel already found; would you like to replace it (Y/n)?" ans
+	read -p ">> Backed up kernel already found; would you like to replace it (Y/n)? " ans
 	[[ -z "$ans" || "${ans:0:1}" = "Y" || "${ans:0:1}" = "y" ]] || exit 0
 fi
 
