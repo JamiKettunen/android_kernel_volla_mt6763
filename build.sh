@@ -65,7 +65,7 @@ else
 	RAMDISK="/dev/null"
 fi
 echo ">> Creating Android boot.img..."
-rm -f boot.img kernel-modules.tar.gz
+rm -f boot.img dtbo.img kernel-modules.tar.gz
 mkbootimg \
 	--kernel "./$ODIR/arch/$ARCH/boot/Image.gz-dtb" \
 	--ramdisk "$RAMDISK" \
@@ -77,6 +77,8 @@ mkbootimg \
 	--pagesize "2048" \
 	-o boot.img
 ls -lh boot.img
+tools/ufdt/mkdtboimg.py \
+	cfg_create dtbo.img $ODIR/dtboimg.cfg
 
 echo ">> Packaging kernel modules..."
 eval $MAKE INSTALL_MOD_PATH=rootfs modules_install
